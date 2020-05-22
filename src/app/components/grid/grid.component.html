@@ -9,13 +9,13 @@
           <thead>
             <tr>
               <th scope="col" *ngFor=" let col of cols">
-                {{ col.header }}
+                {{ col.header }} <fa-icon [icon]="upArrow" (click)="sort(col.field,'asc')" class="font"></fa-icon><fa-icon [icon]="downArrow" (click)="sort(col.field,'desc')" class="font ml-1"></fa-icon>
               </th>
             </tr>
           </thead>
           <tbody>
             <tr *ngFor="let book of barray" class="height">
-              <td *ngFor="let col of cols">
+              <td *ngFor="let col of cols ">
                   {{book[col.field]}}
               </td>
             </tr>

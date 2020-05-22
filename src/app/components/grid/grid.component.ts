@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService, Book } from 'src/app/services/data.service';
+import { faArrowUp, faArrowDown } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-grid',
@@ -7,6 +8,9 @@ import { DataService, Book } from 'src/app/services/data.service';
   styleUrls: ['./grid.component.css']
 })
 export class GridComponent implements OnInit {
+
+  upArrow = faArrowUp;
+  downArrow = faArrowDown;
 
   books: Book[];
 
@@ -55,5 +59,29 @@ export class GridComponent implements OnInit {
     this.barray = this.books.slice(this.paginationId*10-10,this.paginationId*10);
 
   }
+
+  sort(columnName, orderType) {
+    console.log("column name and order type",columnName, orderType);
+    this.barray = this.barray.sort(this.dynamicSort(columnName,orderType));
+  }
+
+  dynamicSort(property,order) {
+    let sort_order = 1;
+    if(order === "desc"){
+        sort_order = -1;
+    }
+    return function (a, b){
+        // a should come before b in the sorted order
+        if(a[property] < b[property]){
+                return -1 * sort_order;
+        // a should come after b in the sorted order
+        }else if(a[property] > b[property]){
+                return 1 * sort_order;
+        // a and b are the same
+        }else{
+          return 0 * sort_order;
+        }
+    }
+}
 
 }
