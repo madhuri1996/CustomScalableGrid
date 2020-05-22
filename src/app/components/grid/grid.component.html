@@ -35,7 +35,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let book of barray" class="height" >
+            <tr *ngFor="let book of barray" class="height" (click)="rowData(book)">
               <td *ngFor="let col of cols" [ngStyle]="{'display': col.display}">
                   {{book[col.field]}}
               </td>
@@ -46,6 +46,9 @@
           <span *ngFor="let id of btns_array">
             <button class="btn btn-primary btn-border ml-2" [id]="id" [ngClass]="{ 'active' : isValue == id }" id="1" (click)="paginate($event)">{{ id }}</button>
           </span>
+        </div>
+        <div class="text-center mt-2" *ngIf="toggle">
+         <b>Row Data:</b> {{ rowdata.name }} - {{ rowdata.pages }} - {{ rowdata.status }} - {{ rowdata.isbn }}
         </div>
       </div>
     </div>

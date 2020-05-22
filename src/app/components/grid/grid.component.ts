@@ -28,6 +28,10 @@ export class GridComponent implements OnInit {
 
   btns_array = [];
 
+  rowdata;
+
+  toggle=false;
+
 
   constructor(private service: DataService) {
 
@@ -82,7 +86,7 @@ export class GridComponent implements OnInit {
   }
 
   changed(event) {
-    debugger;
+
       console.log("event",event.target.name, event.target.checked);
       for (let i = 0; i < this.cols.length; i++) {
         if(this.cols[i].field === event.target.name && event.target.checked === false ) {
@@ -92,5 +96,11 @@ export class GridComponent implements OnInit {
           this.cols[i]['display'] = 'table-cell';
         }
       }
+    }
+
+    rowData(data) {
+      this.toggle = true;
+      console.log("data",data);
+      this.rowdata = data;
     }
 }
