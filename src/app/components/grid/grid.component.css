@@ -1,3 +1,16 @@
 .shadow {
   box-shadow: 0 .5rem 1rem #bed2e8 !important;
 }
+.btn-border {
+  border-radius:2px !important;
+}
+
+.height {
+  line-height:10px !important;
+}
+
+@media (max-width: 578px ) {
+  .height {
+    line-height:17px !important;
+  }
+}

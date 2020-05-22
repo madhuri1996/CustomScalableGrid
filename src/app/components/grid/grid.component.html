@@ -4,22 +4,29 @@
 <div class="container">
   <div class="row mt-5 mb-5">
     <div class="col-md-12 mt-5 shadow p-4">
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th scope="col" *ngFor=" let col of cols">
-              {{ col.header }}
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let book of books">
-            <td *ngFor="let col of cols">
-                {{book[col.field]}}
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col" *ngFor=" let col of cols">
+                {{ col.header }}
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let book of barray" class="height">
+              <td *ngFor="let col of cols">
+                  {{book[col.field]}}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="text-center">
+          <span *ngFor="let id of btns_array">
+            <button class="btn btn-primary btn-border ml-2" [id]="id" [ngClass]="{ 'active' : isValue == id }" id="1" (click)="paginate($event)">{{ id }}</button>
+          </span>
+        </div>
+      </div>
     </div>
   </div>
 </div>
