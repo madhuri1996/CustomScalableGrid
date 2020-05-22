@@ -1,0 +1,25 @@
+<nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-primary shadow">
+  <a class="navbar-brand" href="#">Scalable Grid</a>
+</nav>
+<div class="container">
+  <div class="row mt-5 mb-5">
+    <div class="col-md-12 mt-5 shadow p-4">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col" *ngFor=" let col of cols">
+              {{ col.header }}
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let book of books">
+            <td *ngFor="let col of cols">
+                {{book[col.field]}}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
