@@ -45,10 +45,10 @@ export class GridComponent implements OnInit {
     });
 
     this.cols = [
-      { field: 'name', header: 'Name' },
-      {field: 'pages', header: 'Pages' },
-      { field: 'status', header: 'Status'},
-      { field: 'isbn', header: 'ISBN'}
+      { field: 'name', header: 'Name', display: 'table-cell' },
+      {field: 'pages', header: 'Pages', display: 'table-cell' },
+      { field: 'status', header: 'Status', display: 'table-cell' },
+      { field: 'isbn', header: 'ISBN', display: 'table-cell' }
     ]
   }
 
@@ -71,17 +71,26 @@ export class GridComponent implements OnInit {
         sort_order = -1;
     }
     return function (a, b){
-        // a should come before b in the sorted order
         if(a[property] < b[property]){
                 return -1 * sort_order;
-        // a should come after b in the sorted order
         }else if(a[property] > b[property]){
                 return 1 * sort_order;
-        // a and b are the same
         }else{
           return 0 * sort_order;
         }
     }
-}
+  }
 
+  changed(event) {
+    debugger;
+      console.log("event",event.target.name, event.target.checked);
+      for (let i = 0; i < this.cols.length; i++) {
+        if(this.cols[i].field === event.target.name && event.target.checked === false ) {
+          this.cols[i]['display'] = 'none';
+        }
+        if(this.cols[i].field === event.target.name && event.target.checked === true ) {
+          this.cols[i]['display'] = 'table-cell';
+        }
+      }
+    }
 }

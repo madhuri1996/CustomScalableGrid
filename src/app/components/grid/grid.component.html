@@ -4,18 +4,39 @@
 <div class="container">
   <div class="row mt-5 mb-5">
     <div class="col-md-12 mt-5 shadow p-4">
+      <div class="text-center">
+        <div class="row">
+          <div class="col-md-2 p">Show/Hide Columns :</div>
+          <div class="form-group form-check col-md-2">
+            <input type="checkbox" class="form-check-input" name="name" checked="checkbox" (change)="changed($event)">
+            <label class="form-check-label" for="exampleCheck1">Name</label>
+          </div>
+          <div class="form-group form-check col-md-2">
+            <input type="checkbox" class="form-check-input" name="pages" checked="checkbox" (change)="changed($event)">
+            <label class="form-check-label" for="exampleCheck1">Pages</label>
+          </div>
+          <div class="form-group form-check col-md-2">
+            <input type="checkbox" class="form-check-input" name="status" checked="checkbox" (change)="changed($event)">
+            <label class="form-check-label" for="exampleCheck1">Status</label>
+          </div>
+          <div class="form-group form-check col-md-2">
+            <input type="checkbox" class="form-check-input" name="isbn" checked="checkbox" (change)="changed($event)">
+            <label class="form-check-label" for="exampleCheck1">ISBN</label>
+          </div>
+        </div>
+      </div>
       <div class="table-responsive">
         <table class="table table-striped">
           <thead>
             <tr>
-              <th scope="col" *ngFor=" let col of cols">
+              <th scope="col" *ngFor=" let col of cols" [ngStyle]="{'display': col.display}">
                 {{ col.header }} <fa-icon [icon]="upArrow" (click)="sort(col.field,'asc')" class="font"></fa-icon><fa-icon [icon]="downArrow" (click)="sort(col.field,'desc')" class="font ml-1"></fa-icon>
               </th>
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let book of barray" class="height">
-              <td *ngFor="let col of cols ">
+            <tr *ngFor="let book of barray" class="height" >
+              <td *ngFor="let col of cols" [ngStyle]="{'display': col.display}">
                   {{book[col.field]}}
               </td>
             </tr>
